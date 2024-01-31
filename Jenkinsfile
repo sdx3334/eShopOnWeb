@@ -34,6 +34,7 @@ pipeline {
     stage('Deployment') {
       steps {
         sh '    dotnet publish eShopOnWeb.sln -o /var/aspnet  -p:ErrorOnDuplicatePublishOutputFiles=false'
+        dir(path: '/var/aspnet')
         archiveArtifacts 'OnlyIfSuccessful '
       }
     }
